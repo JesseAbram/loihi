@@ -4,8 +4,8 @@ import "ds-math/math.sol";
 
 contract LoihiRoot is DSMath {
 
-    mapping (address => uint256) public balances;
-    mapping (address => mapping (address => uint256)) public allowances;
+    mapping (address => uint256) public balances; // make private beacuse you have the getter to keep it erc20 compilant?
+    mapping (address => mapping (address => uint256)) public allowances; // make private beacuse you have the getter to keep it erc20 compilant?
     uint256 public totalSupply;
 
     mapping(address => Flavor) public flavors;
@@ -15,7 +15,7 @@ contract LoihiRoot is DSMath {
 
     address public owner;
     bool internal notEntered = true;
-    bool internal frozen = false;
+    bool internal frozen = false; // if you make it public you can have a getter and people can see if the contract is frozen
 
     uint256 alpha;
     uint256 beta;

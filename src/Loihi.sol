@@ -102,7 +102,7 @@ contract Loihi is LoihiRoot {
     }
 
     function transferOwnership (address newOwner) public onlyOwner {
-        require(newOwner != address(0), "Ownable: new owner is the zero address");
+        require(newOwner != address(0), "Ownable: new owner is the zero address"); // if you remove this require you can also make it a renounce ownership by sending it to the 0 address
         emit OwnershipTransferred(owner, newOwner);
         owner = newOwner;
     }
@@ -317,7 +317,7 @@ contract Loihi is LoihiRoot {
 
     function balanceOf (address account) public view returns (uint256) {
         return balances[account];
-    }
+    } 
 
     function allowance (address owner, address spender) public view returns (uint256) {
         return allowances[owner][spender];
@@ -325,11 +325,11 @@ contract Loihi is LoihiRoot {
 
     function getNumeraires () public view returns (address[] memory) {
         return numeraires;
-    }
+    } // already public and compiler has made a getter function
 
     function getReserves () public view returns (address[] memory) {
         return reserves;
-    }
+    } // already public and compiler has made a getter function
 
     function getAdapter (address flavor) external view returns (address[] memory) {
         Flavor memory f = flavors[flavor];
